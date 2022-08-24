@@ -12,7 +12,6 @@ const URL = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send'
 
 export default async function WXbot(msg: string) {
   try {
-    console.log('WXbot', WX_BOT_KEY, msg)
     const response = await axios({
       url: `${URL}?key=${WX_BOT_KEY}`,
       method: 'POST',
@@ -29,7 +28,8 @@ export default async function WXbot(msg: string) {
       },
     })
     if (response.data?.errcode === 0) console.log('🎉发送成功！！！')
-  } catch (error) {
+  }
+  catch (error) {
     console.log(`发送失败 => ${error}`)
   }
 }
